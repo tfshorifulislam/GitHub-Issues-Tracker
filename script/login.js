@@ -1,7 +1,7 @@
 const singInBtn = document.getElementById('sing-in-btn');
-singInBtn.addEventListener('click', ()=>{
 
-
+singInBtn.addEventListener('click', (e)=>{
+    e.preventDefault()
     const pinNumberInput = document.getElementById('pin-number');
     const pinNumber = pinNumberInput.value
 
@@ -9,7 +9,7 @@ singInBtn.addEventListener('click', ()=>{
     const userName = userNameInput.value
 
     
-    if(pinNumber === 'admin' && userName === 'admin123'){
+    if(pinNumber === 'admin123' && userName === 'admin'){
         alert('sign In Successful');
         window.location.assign('./home.html')
     }
@@ -19,4 +19,6 @@ singInBtn.addEventListener('click', ()=>{
     else{
         alert('wrong password or username')
     }
+
+ 
 })
