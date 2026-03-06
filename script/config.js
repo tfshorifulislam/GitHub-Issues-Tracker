@@ -35,11 +35,12 @@ switchBtnParent.addEventListener('click', (event) => {
 
         // all issue api display ;
         const allIssueDisplay = (displayIssue) => {
-
             // content display clear;
             contentDisplay.innerHTML = ''
             // loop for all issues;
-            displayIssue.forEach(item => {
+            displayIssue.forEach((item, number) => {
+                // author serial number count;
+                const serial = number + 1
                 // create new div;
                 const newDiv = document.createElement('div');
                 // newDiv inner html add;
@@ -77,7 +78,7 @@ switchBtnParent.addEventListener('click', (event) => {
                     </div>
 
                     <div class="card-bottom-part bg-white shadow-sm p-4 space-y-2 border border-[#E4E4E7] text-[#64748B] text-sm ">
-                        <p>#1 by john_doe</p>
+                        <p>#${serial} ${item.author}</p>
                         <p>1/15/2024</p>
                     </div>
                 </div>
