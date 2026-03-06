@@ -9,6 +9,10 @@
     <!-- tailwind and daisyUI -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- font awesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,8 +20,61 @@
     <title>GitHub Issues Tracker</title>
 </head>
 
-<body>
+<body class="max-w-[1920px] mx-auto bg-[#F8FAFC] h-screen">
+    <!-- header section -->
+    <header class="mb-14">
+        <div class="navbar bg-base-100 shadow-sm flex flex-col md:flex-row md:justify-between">
 
+            <div class="flex justify-center items-center gap-4 cursor-pointer">
+                <a><img class="w-9 h-9" src="./assets/github-logo.png" alt=""></a>
+
+                <p class="font-semibold text-2xl text-[#1F2937]">
+                    GitHub Issues Tracker
+                </p>
+            </div>
+
+
+            <div class="flex gap-4">
+                <label class="input outline-none">
+                    <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
+                            stroke="currentColor">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.3-4.3"></path>
+                        </g>
+                    </svg>
+                    <input type="search" required placeholder="Search issues..." />
+                </label> 
+                <button class="btn bg-[#4A00FF] text-white rounded-md"><i class="fa-solid fa-plus"></i> New Issue</button>
+            </div>
+
+        </div>
+    </header>
+
+    <main class="w-11/12 mx-auto">
+        <!-- btn switch -->
+        <section class="p-6 bg-white rounded-lg flex gap-2 mb-4">
+            <button class="btn btn-soft border-none bg-[#4A00FF] text-white px-10">All</button>
+            <button class="btn btn-soft bg-white text-[#64748B] border border-[#E4E4E7] px-10">Open</button>
+            <button class="btn btn-soft bg-white text-[#64748B] border border-[#E4E4E7] px-10">Closed</button>
+        </section>
+
+        <!-- issues show section -->
+        <section class="p-6 bg-white rounded-lg flex justify-between">
+            <div class="flex items-center gap-2">
+                <img src="./assets/Aperture.png" alt="">
+                <div>
+                    <h3 class="font-semibold text-[#1F2937] text-xl">50 Issues</h3>
+                    <p class="text-[#64748B]">Track and manage your project issues</p>
+                </div>
+            </div>
+
+            <div class="flex gap-5">
+                <p class="flex items-center gap-2"><img src="./assets/Open-Status.png" alt=""> Open</p>
+                <p class="flex items-center gap-2"><img src="./assets/Closed- Status .png" alt=""> Closed</p>
+            </div>
+        </section>
+    </main>
 </body>
 
 </html>
