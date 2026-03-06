@@ -79,7 +79,7 @@ switchBtnParent.addEventListener('click', (event) => {
 
                     <div class="card-bottom-part bg-white shadow-sm p-4 space-y-2 border border-[#E4E4E7] text-[#64748B] text-sm ">
                         <p>#${serial} ${item.author}</p>
-                        <p>1/15/2024</p>
+                        <p>${item.createdAt}</p>
                     </div>
                 </div>
 
