@@ -3,6 +3,7 @@ const openBtn = document.getElementById('open-btn');
 const closeBtn = document.getElementById('close-btn');
 const allBtn = document.getElementById('all-btn')
 const contentDisplay = document.getElementById('content-display')
+const availableIssue = document.getElementById('available-issues')
 
 const activeBtn = ['text-white', 'bg-[#4A00FF]', 'border-none']
 const inActiveBtn = ['bg-white', 'text-[#64748B]', 'border', 'border-[#E4E4E7]']
@@ -89,7 +90,8 @@ switchBtnParent.addEventListener('click', (event) => {
 
                 contentDisplay.appendChild(newDiv);
             });
-
+            
+            availableIssue.innerText = displayIssue.length;
         }
     }
     else if (event.target.id === 'open-btn') {
@@ -163,7 +165,7 @@ switchBtnParent.addEventListener('click', (event) => {
              `
                 contentDisplay.appendChild(newDiv);
             });
-
+             availableIssue.innerText = openIssue.length;
         }
     }
 
@@ -188,14 +190,14 @@ switchBtnParent.addEventListener('click', (event) => {
         }
 
         // close issue display;
-        const closeIssueDisplay = (closeIssue, number)=>{
+        const closeIssueDisplay = (closeIssue, number) => {
             contentDisplay.innerHTML = ''
 
             const serial = number + 1;
 
             closeIssue.forEach(item => {
                 const newDiv = document.createElement('div')
-                newDiv.innerHTML =`
+                newDiv.innerHTML = `
                 
                  <div class="">
                     <div class="card-top-part bg-white p-4 shadow-sm">
@@ -237,6 +239,7 @@ switchBtnParent.addEventListener('click', (event) => {
                 `
                 contentDisplay.appendChild(newDiv)
             });
+             availableIssue.innerText = closeIssue.length;
         }
         closeIssue()
     }
