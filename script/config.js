@@ -335,3 +335,22 @@ const displayModal = (id) => {
     `
     document.getElementById('my_modal_1').showModal()
 }
+
+
+
+
+// search value;
+document.getElementById('search-btn').addEventListener('click', () => {
+
+    const searchInput = document.getElementById('search-input')
+    const searchValue = searchInput.value.trim().toLowerCase()
+
+    fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`)
+        .then(res => res.json())
+        .then(data => {
+            const allData = data.data;
+            allIssueDisplay(allData)
+
+        });
+
+})
