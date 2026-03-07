@@ -74,13 +74,13 @@ const allIssueDisplay = (displayIssue) => {
                             <div
                                 class="btn btn-xs sm:btn-sm md:btn-md cursor-default text-[#EF4444] uppercase font-bold bg-[#FEECEC] border border-[#FECACA] rounded-full ">
                                 <img class="max-w-3 max-h-3" src="./assets/bug.png" alt="">
-                                <p>${item.status}</p> 
+                                <p>${item.labels[0]}</p>
                             </div>
 
                             <div
                                 class="btn btn-xs sm:btn-sm md:btn-md cursor-default text-[#D97706] uppercase font-bold bg-[#FFF8DB] border border-[#FDE68A] rounded-full">
                                 <img class="w-3 h-3" src="./assets/bug.png" alt="">
-                                <p>${item.status}</p>
+                                <p> ${item.labels[1] ? item.labels[1] : 'Not Found' }</p>
                             </div>
 
                         </div>
@@ -192,13 +192,13 @@ const displayModal = (id) => {
                         <div
                             class=" flex items-center justify-center gap-2 text-[#EF4444] uppercase font-bold bg-[#FEECEC] border border-[#FECACA] rounded-full px-7 py-2">
                             <img class="w-3 h-3" src="./assets/bug.png" alt="">
-                            <p>Bug</p>
+                            <p>${id.labels[0] ? id.labels[0]: 'Not Found'}</p>
                         </div>
 
                         <div
                             class=" flex items-center justify-center gap-2 text-[#D97706] uppercase font-bold bg-[#FFF8DB] border border-[#FDE68A] rounded-full px-7 py-2">
                             <img class="w-3 h-3" src="./assets/bug.png" alt="">
-                            <p>help wanted</p>
+                            <p>${id.labels[1] ? id.labels[1]:'Not Found'}</p>
                         </div>
 
                     </div>
@@ -217,9 +217,11 @@ const displayModal = (id) => {
 
                             <p class="
                                     ${id.priority === 'medium' ? 'bg-[#FFF6D1] text-[#F59E0B]' :
-            id.priority === 'low' ? 'bg-[#EEEFF2] text-[#9CA3AF]' :
-                'text-[#EF4444] bg-[#FEECEC]'}
-                                    font-medium text-sm py-1 px-6 rounded-full">${id.priority}
+                                    id.priority === 'low' ? 'bg-[#EEEFF2] text-[#9CA3AF]' :
+                                    'text-[#EF4444] bg-[#FEECEC]'}
+                                    font-medium text-sm py-1 px-6 rounded-full">
+                                    
+                                    ${id.priority}
                             </p>
                         </div>
 
