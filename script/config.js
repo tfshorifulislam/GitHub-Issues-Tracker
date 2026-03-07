@@ -40,12 +40,13 @@ const allIssueDisplay = (displayIssue) => {
         const serial = number + 1
         // create new div;
         const newDiv = document.createElement('div');
+        const topBorder = item.status === 'open' ? 'border-[#00A96E]' : 'border-[#A855F7]'
         // newDiv inner html add;
         newDiv.innerHTML = `
                 
 
                  <div class="" onclick="showModal(${item.id})">
-                    <div class="card-top-part bg-white p-4 shadow-sm">
+                    <div class="card-top-part bg-white p-4 shadow-sm border-t-6 rounded-md ${topBorder}">
                         <div class="flex justify-between mb-3">
                             <img class="w-6 h-6" src="./assets/Open-Status.png" alt="">
                             <p class="font-medium text-sm py-1 px-6 rounded-full 
@@ -135,11 +136,13 @@ switchBtnParent.addEventListener('click', (event) => {
             openIssue.forEach((item, number) => {
                 const newDiv = document.createElement('div');
                 const serial = number + 1
+                const topBorder = item.status === 'open' ? 'border-[#00A96E]' : 'border-[#A855F7]'
+
                 newDiv.innerHTML = `
              
              
                  <div class="" onclick="showModal(${item.id})">
-                    <div class="card-top-part bg-white p-4 shadow-sm">
+                    <div class="card-top-part bg-white p-4 shadow-sm border-t-6 rounded-md ${topBorder}">
                         <div class="flex justify-between mb-3">
                             <img class="w-6 h-6" src="./assets/Open-Status.png" alt="">
                             <p class="font-medium text-sm py-1 px-6 rounded-full 
@@ -214,10 +217,12 @@ switchBtnParent.addEventListener('click', (event) => {
 
             closeIssue.forEach(item => {
                 const newDiv = document.createElement('div')
+                const topBorder = item.status === 'open' ? 'border-[#00A96E]' : 'border-[#A855F7]'
+
                 newDiv.innerHTML = `
                 
                  <div class="" onclick="showModal(${item.id})">
-                    <div class="card-top-part bg-white p-4 shadow-sm">
+                    <div class="card-top-part bg-white p-4 shadow-sm border-t-6 rounded-md ${topBorder}">
                         <div class="flex justify-between mb-3">
                             <img class="w-6 h-6" src="./assets/Open-Status.png" alt="">
                             <p class="font-medium text-sm py-1 px-6 rounded-full 
@@ -284,8 +289,8 @@ const displayModal = (id) => {
                     <div class="flex gap-2 mb-6">
                         <div class="badge text-white bg-[#00A96E] py-3 px-4 font-medium text-sm mr-5">${id.status}</div>
                         <ul class="flex list-disc ">
-                            <li class="mr-6 text-[#64748B] text-sm">Opened by Fahim Ahmed</li>
-                            <li class="mr-6 text-[#64748B] text-sm">22/02/2026</li>
+                            <li class="mr-6 text-[#64748B] text-sm"><span>Opened by</span> ${id.author}</li>
+                            <li class="mr-6 text-[#64748B] text-sm">${id.updatedAt}</li>
                         </ul>
                     </div>
 
@@ -318,8 +323,8 @@ const displayModal = (id) => {
 
                             <p class="
                              ${id.priority === 'medium' ? 'bg-[#FFF6D1] text-[#F59E0B]' :
-                                id.priority === 'low' ? 'bg-[#EEEFF2] text-[#9CA3AF]' :
-                            'text-[#EF4444] bg-[#FEECEC]'}
+            id.priority === 'low' ? 'bg-[#EEEFF2] text-[#9CA3AF]' :
+                'text-[#EF4444] bg-[#FEECEC]'}
 
                             font-medium text-sm py-1 px-6 rounded-full">${id.priority}</p>
 
