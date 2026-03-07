@@ -59,15 +59,15 @@ const allIssueDisplay = (displayIssue) => {
                         <h1 class="font-semibold text-[#1F2937] text-sm mb-2">${item.title}</h1>
                         <p class="text-[#64748B] line-clamp-2 mb-3">${item.description}</p>
 
-                        <div class="flex flex-col gap-2 md:flex-row md:justify-between">
+                        <div class="flex flex-col gap-2 lg:flex-row lg:justify-between lg-items-center">
                             <div
-                                class=" flex items-center justify-center gap-2 text-[#EF4444] uppercase font-bold bg-[#FEECEC] border border-[#FECACA] rounded-full px-7 py-2">
-                                <img class="w-3 h-3" src="./assets/bug.png" alt="">
+                                class="btn btn-xs sm:btn-sm md:btn-md cursor-default text-[#EF4444] uppercase font-bold bg-[#FEECEC] border border-[#FECACA] rounded-full ">
+                                <img class="max-w-3 max-h-3" src="./assets/bug.png" alt="">
                                 <p>${item.status}</p> 
                             </div>
 
                             <div
-                                class=" flex items-center justify-center gap-2 text-[#D97706] uppercase font-bold bg-[#FFF8DB] border border-[#FDE68A] rounded-full px-7 py-2">
+                                class="btn btn-xs sm:btn-sm md:btn-md cursor-default text-[#D97706] uppercase font-bold bg-[#FFF8DB] border border-[#FDE68A] rounded-full">
                                 <img class="w-3 h-3" src="./assets/bug.png" alt="">
                                 <p>${item.status}</p>
                             </div>
@@ -155,23 +155,21 @@ switchBtnParent.addEventListener('click', (event) => {
                         <h1 class="font-semibold text-[#1F2937] text-sm mb-2">${item.title}</h1>
                         <p class="text-[#64748B] line-clamp-2 mb-3">${item.description}</p>
 
-                        <div class="flex flex-col gap-2 md:flex-row md:justify-between">
+                       <div class="flex flex-col gap-2 lg:flex-row lg:justify-between lg-items-center mb-4">
                             <div
-                                class=" flex items-center justify-center gap-2 text-[#EF4444] uppercase font-bold bg-[#FEECEC] border border-[#FECACA] rounded-full px-7 py-2">
-                                <img class="w-3 h-3" src="./assets/bug.png" alt="">
+                                class="btn btn-xs sm:btn-sm md:btn-md cursor-default text-[#EF4444] uppercase font-bold bg-[#FEECEC] border border-[#FECACA] rounded-full ">
+                                <img class="max-w-3 max-h-3" src="./assets/bug.png" alt="">
                                 <p>${item.status}</p> 
                             </div>
 
                             <div
-                                class=" flex items-center justify-center gap-2 text-[#D97706] uppercase font-bold bg-[#FFF8DB] border border-[#FDE68A] rounded-full px-7 py-2">
+                                class="btn btn-xs sm:btn-sm md:btn-md cursor-default text-[#D97706] uppercase font-bold bg-[#FFF8DB] border border-[#FDE68A] rounded-full">
                                 <img class="w-3 h-3" src="./assets/bug.png" alt="">
                                 <p>${item.status}</p>
                             </div>
                         </div>
 
-                    </div>
-
-                    <div class="card-bottom-part bg-white shadow-sm p-4 space-y-2 border border-[#E4E4E7] text-[#64748B] text-sm ">
+                    <div class="card-bottom-part bg-white  p-4 space-y-2 border-t border-[#E4E4E7] text-[#64748B] text-sm ">
                         <p>#${serial} ${item.author}</p>
                         <p>${item.createdAt}</p>
                     </div>
@@ -221,8 +219,8 @@ switchBtnParent.addEventListener('click', (event) => {
 
                 newDiv.innerHTML = `
                 
-                 <div class="" onclick="showModal(${item.id})">
-                    <div class="card-top-part bg-white p-4 shadow-sm border-t-6 rounded-md ${topBorder}">
+                 <div class="shadow-sm rounded-md" onclick="showModal(${item.id})">
+                    <div class="card-top-part bg-white p-4  border-t-6 rounded-md ${topBorder}">
                         <div class="flex justify-between mb-3">
                             <img class="w-6 h-6" src="./assets/Open-Status.png" alt="">
                             <p class="font-medium text-sm py-1 px-6 rounded-full 
@@ -235,15 +233,15 @@ switchBtnParent.addEventListener('click', (event) => {
                         <h1 class="font-semibold text-[#1F2937] text-sm mb-2">${item.title}</h1>
                         <p class="text-[#64748B] line-clamp-2 mb-3">${item.description}</p>
 
-                        <div class="flex flex-col gap-2 md:flex-row md:justify-between">
+                        <div class="flex flex-col gap-2 lg:flex-row lg:justify-between lg-items-center">
                             <div
-                                class=" flex items-center justify-center gap-2 text-[#EF4444] uppercase font-bold bg-[#FEECEC] border border-[#FECACA] rounded-full px-7 py-2">
-                                <img class="w-3 h-3" src="./assets/bug.png" alt="">
+                                class="btn btn-xs sm:btn-sm md:btn-md cursor-default text-[#EF4444] uppercase font-bold bg-[#FEECEC] border border-[#FECACA] rounded-full ">
+                                <img class="max-w-3 max-h-3" src="./assets/bug.png" alt="">
                                 <p>${item.status}</p> 
                             </div>
 
                             <div
-                                class=" flex items-center justify-center gap-2 text-[#D97706] uppercase font-bold bg-[#FFF8DB] border border-[#FDE68A] rounded-full px-7 py-2">
+                                class="btn btn-xs sm:btn-sm md:btn-md cursor-default text-[#D97706] uppercase font-bold bg-[#FFF8DB] border border-[#FDE68A] rounded-full">
                                 <img class="w-3 h-3" src="./assets/bug.png" alt="">
                                 <p>${item.status}</p>
                             </div>
@@ -251,7 +249,7 @@ switchBtnParent.addEventListener('click', (event) => {
 
                     </div>
 
-                    <div class="card-bottom-part bg-white shadow-sm p-4 space-y-2 border border-[#E4E4E7] text-[#64748B] text-sm ">
+                    <div class="card-bottom-part bg-white p-4 space-y-2 border-t border-[#E4E4E7] text-[#64748B] text-sm ">
                         <p>#${serial} ${item.author}</p>
                         <p>${item.createdAt}</p>
                     </div>
@@ -283,8 +281,9 @@ const showModal = (id) => {
 
 const displayModal = (id) => {
     const modalContainer = document.getElementById('modal-show-section');
+    const topBorder = id.status === 'open' ? 'border-[#00A96E]' : 'border-[#A855F7]'
     modalContainer.innerHTML = `
-    
+            
             <h3 class="text-2xl text-[#1F2937] font-bold mb-2">${id.title}</h3>
                     <div class="flex gap-2 mb-6">
                         <div class="badge text-white bg-[#00A96E] py-3 px-4 font-medium text-sm mr-5">${id.status}</div>

@@ -20,10 +20,10 @@
     <title>GitHub Issues Tracker</title>
 </head>
 
-<body class="max-w-[1920px] mx-auto bg-[#F8FAFC] h-screen">
+<body class="max-w-[1920px] w-11/12 mx-auto bg-[#F8FAFC] h-screen">
     <!-- header section -->
     <header class="mb-14">
-        <div class="navbar bg-base-100 shadow-sm flex flex-col md:flex-row md:justify-between">
+        <div class="navbar bg-base-100 shadow-sm text-center space-y-3 flex flex-col lg:flex-row md:justify-between">
 
             <div class="flex justify-center items-center gap-4 cursor-pointer">
                 <a><img class="w-9 h-9" src="./assets/github-logo.png" alt=""></a>
@@ -52,9 +52,9 @@
         </div>
     </header>
 
-    <main class="w-11/12 mx-auto">
+    <main class="">
         <!-- btn switch -->
-        <section id="switch-btn-parent" class="p-6 bg-white rounded-lg flex gap-2 mb-4 shadow-md">
+        <section id="switch-btn-parent" class="p-6 bg-white rounded-lg flex flex-col md:flex-row gap-2 mb-4 shadow-md">
             <button id="all-btn" class="btn btn-soft border-none bg-[#4A00FF] text-white px-10">All</button>
             <button id="open-btn"
                 class="btn btn-soft bg-white text-[#64748B] border border-[#E4E4E7] px-10">Open</button>
@@ -63,7 +63,7 @@
         </section>
 
         <!-- issues show section -->
-        <section class="p-6 bg-white rounded-lg flex justify-between shadow-sm">
+        <section class="p-6 bg-white rounded-lg flex flex-col md:flex-row md:justify-between space-y-5 shadow-sm">
             <div class="flex items-center gap-2">
                 <img src="./assets/Aperture.png" alt="">
                 <div>
@@ -84,7 +84,7 @@
         </div>
         <!-- content section -->
         <section class="bg-[#FBFBFB]  shadow-md p-6">
-            <div id="content-display" class="grid grid-cols-1 md:grid-cols-4 space-x-6 space-y-6">
+            <div id="content-display" class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 space-x-6 space-y-6">
 
             </div>
         </section>
