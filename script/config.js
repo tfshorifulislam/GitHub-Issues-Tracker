@@ -4,48 +4,43 @@ const closeBtn = document.getElementById('close-btn');
 const allBtn = document.getElementById('all-btn')
 const contentDisplay = document.getElementById('content-display')
 const availableIssue = document.getElementById('available-issues')
+const spinner = document.getElementById('spinner-loading')
 
 const activeBtn = ['text-white', 'bg-[#4A00FF]', 'border-none']
 const inActiveBtn = ['bg-white', 'text-[#64748B]', 'border', 'border-[#E4E4E7]']
 
-// switch button 
-switchBtnParent.addEventListener('click', (event) => {
+// show spinner 
+const showSpinner = () => {
+    spinner.classList.remove('hidden')
+}
 
-    if (event.target.tagName !== 'BUTTON')
-        return;
+// HIDE spinner 
+const hideSpinner = () => {
+    spinner.classList.add('hidden')
+}
 
-    if (event.target.id === 'all-btn') {
-        allBtn.classList.remove(...inActiveBtn)
-        allBtn.classList.add(...activeBtn)
 
-        openBtn.classList.remove(...activeBtn)
-        closeBtn.classList.remove(...activeBtn)
-
-        openBtn.classList.add(...inActiveBtn)
-        closeBtn.classList.add(...inActiveBtn)
-
-        // all issue api fetch;
-        const allIssue = () => {
-            const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues`;
-
-            fetch(url)
-                .then(res => res.json())
-                .then(data => allIssueDisplay(data.data))
-        }
-        allIssue()
-
-        // all issue api display ;
-        const allIssueDisplay = (displayIssue) => {
-            // content display clear;
-            contentDisplay.innerHTML = ''
-            // loop for all issues;
-            displayIssue.forEach((item, number) => {
-                // author serial number count;
-                const serial = number + 1
-                // create new div;
-                const newDiv = document.createElement('div');
-                // newDiv inner html add;
-                newDiv.innerHTML = `
+// all issue api fetch;
+const allIssue = () => {
+    const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues`;
+    showSpinner()
+    fetch(url)
+        .then(res => res.json())
+        .then(data => allIssueDisplay(data.data))
+}
+allIssue()
+// all issue api display ;
+const allIssueDisplay = (displayIssue) => {
+    // content display clear;
+    contentDisplay.innerHTML = ''
+    // loop for all issues;
+    displayIssue.forEach((item, number) => {
+        // author serial number count;
+        const serial = number + 1
+        // create new div;
+        const newDiv = document.createElement('div');
+        // newDiv inner html add;
+        newDiv.innerHTML = `
                 
 
                  <div class="">
@@ -54,9 +49,9 @@ switchBtnParent.addEventListener('click', (event) => {
                             <img class="w-6 h-6" src="./assets/Open-Status.png" alt="">
                             <p class="font-medium text-sm py-1 px-6 rounded-full 
                             ${item.priority === 'medium' ? 'bg-[#FFF6D1] text-[#F59E0B]' :
-                        item.priority === 'low' ? 'bg-[#EEEFF2] text-[#9CA3AF]' :
-                            'text-[#EF4444] bg-[#FEECEC]'
-                    }
+                item.priority === 'low' ? 'bg-[#EEEFF2] text-[#9CA3AF]' :
+                    'text-[#EF4444] bg-[#FEECEC]'
+            }
                             ">${item.priority}</p>
                         </div>
                         <h1 class="font-semibold text-[#1F2937] text-sm mb-2">${item.title}</h1>
@@ -88,11 +83,29 @@ switchBtnParent.addEventListener('click', (event) => {
                   `
 
 
-                contentDisplay.appendChild(newDiv);
-            });
-            
-            availableIssue.innerText = displayIssue.length;
-        }
+        contentDisplay.appendChild(newDiv);
+    });
+
+    availableIssue.innerText = displayIssue.length;
+    hideSpinner()
+}
+allIssue()
+// switch button 
+switchBtnParent.addEventListener('click', (event) => {
+
+    if (event.target.tagName !== 'BUTTON')
+        return;
+
+    if (event.target.id === 'all-btn') {
+        allBtn.classList.remove(...inActiveBtn)
+        allBtn.classList.add(...activeBtn)
+
+        openBtn.classList.remove(...activeBtn)
+        closeBtn.classList.remove(...activeBtn)
+
+        openBtn.classList.add(...inActiveBtn)
+        closeBtn.classList.add(...inActiveBtn)
+        allIssue()
     }
     else if (event.target.id === 'open-btn') {
         openBtn.classList.remove(...inActiveBtn)
@@ -108,6 +121,7 @@ switchBtnParent.addEventListener('click', (event) => {
         const openIssue = (id) => {
             const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues`
             // console.log(url)
+            showSpinner()
             fetch(url)
                 .then(res => res.json())
                 .then(data => openIssueDisplay(data.data.filter(issue => issue.status === 'open')))
@@ -165,7 +179,8 @@ switchBtnParent.addEventListener('click', (event) => {
              `
                 contentDisplay.appendChild(newDiv);
             });
-             availableIssue.innerText = openIssue.length;
+            availableIssue.innerText = openIssue.length;
+            hideSpinner()
         }
     }
 
@@ -184,6 +199,7 @@ switchBtnParent.addEventListener('click', (event) => {
         // api fetch;
         const closeIssue = () => {
             const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues`
+            showSpinner()
             fetch(url)
                 .then(res => res.json())
                 .then(data => closeIssueDisplay(data.data.filter(issue => issue.status === 'closed')))
@@ -239,7 +255,8 @@ switchBtnParent.addEventListener('click', (event) => {
                 `
                 contentDisplay.appendChild(newDiv)
             });
-             availableIssue.innerText = closeIssue.length;
+            availableIssue.innerText = closeIssue.length;
+            hideSpinner()
         }
         closeIssue()
     }
