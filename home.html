@@ -56,8 +56,10 @@
         <!-- btn switch -->
         <section id="switch-btn-parent" class="p-6 bg-white rounded-lg flex gap-2 mb-4 shadow-md">
             <button id="all-btn" class="btn btn-soft border-none bg-[#4A00FF] text-white px-10">All</button>
-            <button id="open-btn" class="btn btn-soft bg-white text-[#64748B] border border-[#E4E4E7] px-10">Open</button>
-            <button id="close-btn" class="btn btn-soft bg-white text-[#64748B] border border-[#E4E4E7] px-10">Closed</button>
+            <button id="open-btn"
+                class="btn btn-soft bg-white text-[#64748B] border border-[#E4E4E7] px-10">Open</button>
+            <button id="close-btn"
+                class="btn btn-soft bg-white text-[#64748B] border border-[#E4E4E7] px-10">Closed</button>
         </section>
 
         <!-- issues show section -->
@@ -65,7 +67,7 @@
             <div class="flex items-center gap-2">
                 <img src="./assets/Aperture.png" alt="">
                 <div>
-                    <h3  class="font-semibold text-[#1F2937] text-xl"><span id="available-issues">0</span> Issues</h3>
+                    <h3 class="font-semibold text-[#1F2937] text-xl"><span id="available-issues">0</span> Issues</h3>
                     <p class="text-[#64748B]">Track and manage your project issues</p>
                 </div>
             </div>
@@ -77,14 +79,32 @@
         </section>
 
         <!-- spinner section -->
-         <div id="spinner-loading" class="flex justify-center py-5 items-center">
-             <span class="loading loading-spinner loading-xl"></span>
-         </div>
+        <div id="spinner-loading" class="flex justify-center py-5 items-center">
+            <span class="loading loading-spinner loading-xl"></span>
+        </div>
         <!-- content section -->
-        <section  class="bg-[#FBFBFB]  shadow-md p-6">
+        <section class="bg-[#FBFBFB]  shadow-md p-6">
             <div id="content-display" class="grid grid-cols-1 md:grid-cols-4 space-x-6 space-y-6">
-               
+
             </div>
+        </section>
+
+        <!-- modal section -->
+        <section>
+    
+            <dialog id="my_modal_1" class="modal">
+                <div class="modal-box">
+                    <div id="modal-show-section"></div>
+                    
+                    <div class="modal-action">
+                        <form method="dialog">
+                            <!-- if there is a button in form, it will close the modal -->
+                            <button class="btn font-semibold text-white bg-[#4A00FF]">Close</button>
+                        </form>
+                    </div>
+                </div>
+            </dialog>
+
         </section>
     </main>
     <script src="./script/config.js"></script>

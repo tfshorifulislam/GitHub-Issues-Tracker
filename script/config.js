@@ -5,6 +5,7 @@ const allBtn = document.getElementById('all-btn')
 const contentDisplay = document.getElementById('content-display')
 const availableIssue = document.getElementById('available-issues')
 const spinner = document.getElementById('spinner-loading')
+const modalShow = document.getElementById('my_modal_1')
 
 const activeBtn = ['text-white', 'bg-[#4A00FF]', 'border-none']
 const inActiveBtn = ['bg-white', 'text-[#64748B]', 'border', 'border-[#E4E4E7]']
@@ -43,7 +44,7 @@ const allIssueDisplay = (displayIssue) => {
         newDiv.innerHTML = `
                 
 
-                 <div class="">
+                 <div class="" onclick="showModal(${item.id})">
                     <div class="card-top-part bg-white p-4 shadow-sm">
                         <div class="flex justify-between mb-3">
                             <img class="w-6 h-6" src="./assets/Open-Status.png" alt="">
@@ -137,7 +138,7 @@ switchBtnParent.addEventListener('click', (event) => {
                 newDiv.innerHTML = `
              
              
-                 <div class="">
+                 <div class="" onclick="showModal(${item.id})">
                     <div class="card-top-part bg-white p-4 shadow-sm">
                         <div class="flex justify-between mb-3">
                             <img class="w-6 h-6" src="./assets/Open-Status.png" alt="">
@@ -215,7 +216,7 @@ switchBtnParent.addEventListener('click', (event) => {
                 const newDiv = document.createElement('div')
                 newDiv.innerHTML = `
                 
-                 <div class="">
+                 <div class="" onclick="showModal(${item.id})">
                     <div class="card-top-part bg-white p-4 shadow-sm">
                         <div class="flex justify-between mb-3">
                             <img class="w-6 h-6" src="./assets/Open-Status.png" alt="">
@@ -263,3 +264,70 @@ switchBtnParent.addEventListener('click', (event) => {
 })
 
 
+// modal section function;
+
+const showModal = (id) => {
+    const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
+    console.log(url)
+
+    fetch(url)
+        .then(res => res.json())
+        .then(data => displayModal(data.data))
+
+}
+
+const displayModal = (id) => {
+    const modalContainer = document.getElementById('modal-show-section');
+    modalContainer.innerHTML = `
+    
+            <h3 class="text-2xl text-[#1F2937] font-bold mb-2">${id.title}</h3>
+                    <div class="flex gap-2 mb-6">
+                        <div class="badge text-white bg-[#00A96E] py-3 px-4 font-medium text-sm mr-5">${id.status}</div>
+                        <ul class="flex list-disc ">
+                            <li class="mr-6 text-[#64748B] text-sm">Opened by Fahim Ahmed</li>
+                            <li class="mr-6 text-[#64748B] text-sm">22/02/2026</li>
+                        </ul>
+                    </div>
+
+                    <div class="flex flex-col gap-2 md:flex-row mb-6">
+                        <div
+                            class=" flex items-center justify-center gap-2 text-[#EF4444] uppercase font-bold bg-[#FEECEC] border border-[#FECACA] rounded-full px-7 py-2">
+                            <img class="w-3 h-3" src="./assets/bug.png" alt="">
+                            <p>Bug</p>
+                        </div>
+
+                        <div
+                            class=" flex items-center justify-center gap-2 text-[#D97706] uppercase font-bold bg-[#FFF8DB] border border-[#FDE68A] rounded-full px-7 py-2">
+                            <img class="w-3 h-3" src="./assets/bug.png" alt="">
+                            <p>help wanted</p>
+                        </div>
+                    </div>
+
+
+                    <p class="text-[#64748B] text-sm mb-6">${id.description}</p>
+
+                    <div class="bg-[#F8FAFC] rounded-lg p-4 flex justify-between">
+
+                        <div>
+                            <p class="text-[#64748B] mb-2">Assignee:</p>
+                            <p class="font-semibold">${id.assignee}</p>
+                        </div>
+
+                        <div>
+                            <p class="text-[#64748B] mb-2">Priority:</p>
+
+                            <p class="
+                             ${id.priority === 'medium' ? 'bg-[#FFF6D1] text-[#F59E0B]' :
+                                id.priority === 'low' ? 'bg-[#EEEFF2] text-[#9CA3AF]' :
+                            'text-[#EF4444] bg-[#FEECEC]'}
+
+                            font-medium text-sm py-1 px-6 rounded-full">${id.priority}</p>
+
+                        </div>
+
+                    </div>
+    
+    
+    `
+    document.getElementById('my_modal_1').showModal()
+}
