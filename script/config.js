@@ -241,6 +241,10 @@ document.getElementById('search-btn').addEventListener('click', () => {
     const searchInput = document.getElementById('search-input')
     const searchValue = searchInput.value.trim().toLowerCase()
 
+     if(searchValue === ''){
+            return;
+        }
+        
     fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`)
         .then(res => res.json())
         .then(data => {
